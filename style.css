@@ -3,3 +3,17 @@ body {
     padding: 0;
     background-color: rgb(253, 239, 156);
 }
+
+.building {
+    position: relative;
+    left: 40vw;
+    height: 85.3vh;
+    width: 45vw;
+    background-color: brown;
+}
+
+.a6 {
+    background-color: chartreuse;
+    border: 1px solid black;
+    height: 10vh;
+}
