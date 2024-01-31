@@ -6,9 +6,9 @@ body {
 
 .building {
     position: relative;
-    left: 40vw;
+    left: 40vh;
     height: 85.3vh;
-    width: 45vw;
+    width: 100vh;
     background-color: brown;
 }
 
@@ -16,4 +16,61 @@ body {
     background-color: chartreuse;
     border: 1px solid black;
     height: 10vh;
+}
+
+.a5 {
+    background-color: aquamarine;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.a4 {
+    background-color: purple;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.a3 {
+    background-color: red;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.a2 {
+    background-color: blue;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.a1 {
+    background-color: green;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.ter {
+    background-color: gray;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.sub1 {
+    background-color: red;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.sub2 {
+    background-color: blueviolet;
+    border: 1px solid black;
+    height: 10vh;
+}
+
+.elevator {
+    height: 10vh;
+    width: 10vh;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 20vh;
 }
