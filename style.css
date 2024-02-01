@@ -1,76 +1,102 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(253, 239, 156);
+    background-color: rgb(123, 145, 171);
+    overflow-y: hidden;
 }
 
 .building {
     position: relative;
     left: 40vh;
-    height: 85.3vh;
-    width: 100vh;
+    height: 100vh;
+    width: 60vh;
     background-color: brown;
 }
 
 .a6 {
     background-color: chartreuse;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .a5 {
     background-color: aquamarine;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .a4 {
     background-color: purple;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .a3 {
     background-color: red;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .a2 {
     background-color: blue;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .a1 {
     background-color: green;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .ter {
     background-color: gray;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .sub1 {
     background-color: red;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .sub2 {
     background-color: blueviolet;
     border: 1px solid black;
-    height: 10vh;
+    height: 10.9vh;
 }
 
 .elevator {
-    height: 10vh;
-    width: 10vh;
+    height: 11vh;
+    width: 10.8vh;
     background-color: black;
     position: absolute;
-    top: 0;
-    left: 20vh;
+    top: 67vh;
+    left: 25.8vh;
+}
+
+.elevator2 {
+    height: 10.1vh;
+    width: 10.8vh;
+    background-color: black;
+    position: absolute;
+    top: 67vh;
+    left: 45.8vh;
+}
+
+.building img {
+    height: 10.9vh;
+    width: 60vh;
+}
+
+.bot {
+    position: absolute;
+    height: 94vh;
+    width: 70vh;
+    left: 115vh;
+    top: 3vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
