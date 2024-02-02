@@ -105,3 +105,13 @@ body {
     background-color: blue;
     color: rgb(255, 255, 255);
 }
+
+.elevator img {
+ width: 100%;
+ height: 100%;
+}
+
+.elevator2 img {
+    width: 100%;
+    height: 100%;
+   }

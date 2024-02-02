@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const elevator1 = document.querySelector('.elevator');
     const elevator2 = document.querySelector('.elevator2');
 
-    // Iniciar ambos os elevadores no andar 7
+    // Iniciar ambos os elevadores no térreo
     elevator1.style.top = '66.9vh';
     elevator2.style.top = '66.9vh';
 
