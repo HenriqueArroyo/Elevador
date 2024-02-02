@@ -101,6 +101,7 @@ body {
     flex-direction: column;
 }
 
-.bot button:focus {
-    
+.bot .ativo {
+    background-color: blue;
+    color: rgb(255, 255, 255);
 }

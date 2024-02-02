@@ -1,67 +1,87 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const buttons = document.querySelectorAll('.bot button');
-  const elevator1 = document.querySelector('.elevator');
-  const elevator2 = document.querySelector('.elevator2');
+    const buttons = document.querySelectorAll('.bot button');
+    const elevator1 = document.querySelector('.elevator');
+    const elevator2 = document.querySelector('.elevator2');
 
-  // Iniciar ambos os elevadores no andar 7
-  elevator1.style.top = '66.9vh';
-  elevator2.style.top = '66.9vh';
+    // Iniciar ambos os elevadores no andar 7
+    elevator1.style.top = '66.9vh';
+    elevator2.style.top = '66.9vh';
 
-  buttons.forEach(function (button) {
-      button.addEventListener('click', function () {
-          const floorNumber = parseInt(this.textContent.split(' ')[3]);
-          const closestElevator = findClosestElevator(floorNumber);
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            const andarNum = parseInt(this.textContent.split(' ')[3]);
+            const closestElevator = encontrarElevadorPro(andarNum);
 
-          moveElevator(closestElevator, floorNumber);
-      });
-  });
+            moverElevador(closestElevator, andarNum);
 
-  function findClosestElevator(floorNumber) {
-      const distanceToElevator1 = Math.abs(getCurrentFloor(elevator1) - floorNumber);
-      const distanceToElevator2 = Math.abs(getCurrentFloor(elevator2) - floorNumber);
+            // Adiciona a classe 'ativo' ao botão clicado
+            buttons.forEach(function (btn) {
+                btn.classList.remove('ativo');
+            });
+            this.classList.add('ativo');
+        });
+    });
 
-      if (distanceToElevator1 === distanceToElevator2 && getCurrentFloor(elevator1) === getCurrentFloor(elevator2)) {
-          // Se ambos estiverem no mesmo andar, priorize elevator1
-          return elevator1;
-      }
+    function encontrarElevadorPro(andarNum) {
+        const distanciaElevador1 = calcularDistancia(elevator1, andarNum);
+        const distanciaElevador2 = calcularDistancia(elevator2, andarNum);
 
-      return distanceToElevator1 < distanceToElevator2 ? elevator1 : elevator2;
-  }
+        // Verifica se o elevador mais baixo está mais longe do que o elevador mais alto
+        if (
+            getAndarAtual(elevator1) > getAndarAtual(elevator2) &&
+            distanciaElevador1 > distanciaElevador2
+        ) {
+            return elevator2;
+        }
 
-  function getCurrentFloor(elevator) {
-      const floorHeight = 11; // Altura do andar, ajuste conforme necessário
-      const currentPosition = parseInt(elevator.style.top || getComputedStyle(elevator).top);
-      return Math.round(currentPosition / floorHeight);
-  }
+        return distanciaElevador1 < distanciaElevador2 ? elevator1 : elevator2;
+    }
 
-  function moveElevator(elevator, floorNumber) {
-      const floorHeight = 11.1; // Altura do andar, ajuste conforme necessário
-      const targetPosition = (floorNumber - 1) * floorHeight;
+    function calcularDistancia(elevator, andarNum) {
+        const distanciaAndar = Math.abs(getAndarAtual(elevator) - andarNum);
+        const distanciaVertical = Math.abs(
+            parseInt(elevator.style.top || getComputedStyle(elevator).top) -
+            (andarNum - 1) * 11.1
+        );
 
-      // Animação suave do movimento do elevador
-      animateElevator(elevator, targetPosition);
-  }
+        // Combina a distância horizontal e vertical para dar peso à posição vertical
+        return distanciaAndar + distanciaVertical;
+    }
 
-  function animateElevator(elevator, targetPosition) {
-      const duration = 1000; // Duração da animação em milissegundos
-      const fps = 60;
-      const frames = duration / (1000 / fps);
-      const currentPosition = parseInt(elevator.style.top || getComputedStyle(elevator).top);
+    function getAndarAtual(elevator) {
+        const alturaAndar = 11; // Altura do andar, ajuste conforme necessário
+        const posicaoAtual = parseInt(elevator.style.top || getComputedStyle(elevator).top);
+        return Math.round(posicaoAtual / alturaAndar);
+    }
 
-      const distance = targetPosition - currentPosition;
-      const step = distance / frames;
+    function moverElevador(elevator, andarNum) {
+        const alturaAndar = 11.1; // Altura do andar, ajuste conforme necessário
+        const posicaoFinal = (andarNum - 1) * alturaAndar;
 
-      let currentFrame = 0;
+        // Animação suave do movimento do elevador
+        animarElevador(elevator, posicaoFinal);
+    }
 
-      const animationInterval = setInterval(function () {
-          currentFrame++;
+    function animarElevador(elevator, posicaoFinal) {
+        const duracao = 1000; // Duração da animação em milissegundos
+        const fps = 60;
+        const frames = duracao / (1000 / fps);
+        const posicaoAtual = parseInt(elevator.style.top || getComputedStyle(elevator).top);
 
-          if (currentFrame <= frames) {
-              const newPosition = currentPosition + step * currentFrame;
-              elevator.style.top = `${newPosition}vh`;
-          } else {
-              clearInterval(animationInterval);
-          }
-      }, 1000 / fps);
-  }
+        const distancia = posicaoFinal - posicaoAtual;
+        const passo = distancia / frames;
+
+        let frameAtual = 0;
+
+        const intervaloAnimacao = setInterval(function () {
+            frameAtual++;
+
+            if (frameAtual <= frames) {
+                const novaPosicao = posicaoAtual + passo * frameAtual;
+                elevator.style.top = `${novaPosicao}vh`;
+            } else {
+                clearInterval(intervaloAnimacao);
+            }
+        }, 1000 / fps);
+    }
 });
