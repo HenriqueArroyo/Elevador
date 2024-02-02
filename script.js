@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function moveElevator(elevator, floorNumber) {
-      const floorHeight = 11; // Altura do andar, ajuste conforme necessário
+      const floorHeight = 11.1; // Altura do andar, ajuste conforme necessário
       const targetPosition = (floorNumber - 1) * floorHeight;
 
       // Animação suave do movimento do elevador
