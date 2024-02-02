@@ -3,8 +3,23 @@ body {
     padding: 0;
     background-color: rgb(123, 145, 171);
     overflow-y: hidden;
+    
+}
+.bgimg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    top: 0;
+    z-index: -1;
 }
 
+.bgimg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px);
+}
 .building {
     position: relative;
     left: 40vh;
